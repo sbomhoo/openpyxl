@@ -1,0 +1,65 @@
+-----------------------------------------------------------------------------
+[File I/O ]
+1. 데이터 셋 : data_560.xlsx
+2. 사용라이브러리:openpyxl
+3. 코드
+ -test1: 파이썬으로 엑셀파일 불러와서 초록부분만 추출하여 새로운 엑셀파일로 저장
+
+ -test2: 엑셀파일 한 셀을 메모장으로 저장하기
+
+ -test3: 메모장으로 저장할 때 4분기 폴더로 나눠 저장 
+	ex> txt파일 이름: 1~50,51~120,121~252,253~560
+
+ -test3-1: test4를 쉽게 수행하기 위해 텍스트 파일 이름 변형
+	ex> txt파일 이름: 1~50,1~90,1~86,1~487
+
+ -test4 : test3-1결과로 나온 텍스트들을 text0으로 통합
+
+ ***test3-1과 test4 코드가 최종형입니다.
+-----------------------------------------------------------------------------
+[test1.py]
+
+1.파이썬에서 엑셀 불러오기 다양한 라이브러리 
+http://www.python-excel.org/
+
+openpyxl 선택
+
+
+2.초록 컬럼만 떼서 새로운 엑셀파일로 저장하기
+예시가 덮어쓰기밖에 없어서...
+
+
+3.엑셀파일의 첫 행 헤더 '초록' 지우기
+delete_rows(1) 
+
+https://openpyxl.readthedocs.io/en/stable/index.html
+
+------------------------------------
+[test2.py]
+
+1.엑셀파일 한 셀을 메모장으로 저장하기
+
+2. 오류
+UnicodeEncodeError: 'cp949' codec can't encode character '\u2024' in position 195: 
+illegal multibyte sequence
+
+해결
+http://airpage.org/xe/language_data/20205
+
+
+<UTF-8>
+UTF-8의 경우에는 조합형 방식의 문자집합(Charater Set)이면서, 
+유니코드 인코딩 방식중 하나입니다.
+한글 1글자가 3바이트 
+한글도 완벽히 표현할 수 있습니다.
+다양한 언어로 작성되는 환경이나, 
+웹과 같은 다양한 국가의 사람들이 보는 경우에는 더 좋은 방식입니다.
+
+<EUC-KR, CP949>
+완성형 인코딩방식
+한글 1글자가 2바이트
+한글과 '한국에서 통용되는 한자' 그리고 '영문'을 표현할 수 있습니다.
+
+
+출처: http://studyforus.tistory.com/167 
+https://m.blog.naver.com/PostView.nhn?blogId=junhwen&logNo=130080223604&proxyReferer=https%3A%2F%2Fwww.google.com%2F
